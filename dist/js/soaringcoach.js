@@ -9,7 +9,7 @@ $(document).ready(function() {
               $('.bearing').append(data.bearing);
               $('.size').append(data.size);
             }
-        }
+        },
         error : function(data){
                     console.log(data);
                    }
