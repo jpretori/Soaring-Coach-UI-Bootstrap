@@ -4,7 +4,7 @@ $(document).ready(function() {
         crossDomain: true,
         contentType: "application/json; charset=utf-8",
         url: "https://protected-bayou-34428.herokuapp.com/health?echo=21",
-        dataType: "jsonp"
+        dataType: "jsonp",
         success: function(data){
               $('.bearing').append(data.bearing);
               $('.size').append(data.size);
