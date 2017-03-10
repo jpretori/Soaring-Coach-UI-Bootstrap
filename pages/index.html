@@ -18,7 +18,6 @@
         <!--[if lt IE 9]>
             <script src="../../assets/js/ie8-responsive-file-warning.js"></script>
         <![endif]-->
-        <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements
         and media queries -->
         <!--[if lt IE 9]>
@@ -30,10 +29,42 @@
         <div class="container">
             <div class="starter-template">
                 <h1>Bootstrap starter template</h1>
-                    <p class="bearing">The vector bearing is: </p>
-                    <p class="size">The vector size is: </p>
+                    <p id="bearing">The vector bearing is : </p>
+                    <p id="size">The vector size is: </p>
             </div>
         </div>
+
+
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <div class="col-sm-2">
+                <form method="post" enctype="multipart/form-data">
+                  IGC File: <br>
+                  <input id="fileInput" type="file" class="form-control" id="inputFile" placeholder="File" name="file">
+                  <br><br>
+                  <input id="fileUpload" type="submit" value="Submit">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <ol>
+                  <li>One</li>
+                  <li>Two</li>
+                  <li>Three</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- /.container -->
         <!-- Bootstrap core JavaScript==================================================-
         ->
@@ -44,6 +75,9 @@
         </script>
         <!-- Custom Soaring Coach JavaScript -->
         <script src="../dist/js/soaringcoach.js"></script>
+
+
+
 
 
 </body></html>
