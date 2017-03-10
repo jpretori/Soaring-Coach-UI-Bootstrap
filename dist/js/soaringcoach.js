@@ -8,8 +8,7 @@ $(document).ready(function() {
         success: function(data){
               $('.bearing').append(data.bearing);
               $('.size').append(data.size);
-            }
-        },
+            },
         error : function(data){
                     console.log(data);
                    }
