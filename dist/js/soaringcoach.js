@@ -6,11 +6,12 @@ $(document).ready(function() {
         url: "https://protected-bayou-34428.herokuapp.com/health?echo=21",
         dataType: "jsonp",
         success: function(data){
-              $('.bearing').append(data.bearing);
-              $('.size').append(data.size);
+          console.log(data.bearing);
+          console.log(data.size);
             },
         error : function(data){
-                    console.log(data);
+                    console.log(data.bearing);
+                    console.log(data.size);
                    }
     })
 });
