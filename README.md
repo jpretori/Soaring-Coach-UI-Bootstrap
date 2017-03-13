@@ -1,3 +1,10 @@
+# Soaring Coach UI
+
+There is a clickable prototype that documents the interface this repo is working towards: https://xd.adobe.com/view/dbea7dcf-03f4-4070-b2fd-a33ac5bb2559/
+
+What follows below, is the original Readme.md from the bootstrap theme.  This theme will actually not be used at all, and after all of it has been removed, the readme will change to reflect that.
+
+
 # [Start Bootstrap](http://startbootstrap.com/) - [SB Admin 2](http://startbootstrap.com/template-overviews/sb-admin-2/)
 [![CDNJS](https://img.shields.io/cdnjs/v/startbootstrap-sb-admin-2.svg)](https://cdnjs.com/libraries/startbootstrap-sb-admin-2)
 
