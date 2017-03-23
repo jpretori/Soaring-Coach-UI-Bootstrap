@@ -7,8 +7,8 @@
       content must come *after* these tags -->
       <meta name="description" content="">
       <meta name="author" content="">
-      <link rel="icon" href="../../favicon.ico">
-      <title>Starter Template for Bootstrap</title>
+      <link rel="icon" href="../favicon.ico">
+      <title>Soaring Coach</title>
       <!-- Bootstrap core CSS -->
       <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
       <!-- Custom styles for this template -->
@@ -26,6 +26,20 @@
                <input type="submit" class="form-control" value="Submit" />
       		</div>
          </form>
+
+         <div>
+            <h1>Flight Details</h1>
+            <h3>Pilot Name</h3>
+            <p id="pilotName"> </p>
+
+            <h3>Total Track Distance</h3>
+            <p id="totalDistance"> </p>
+
+            <h3>Straight Phases</h3>
+            <div class="flot-chart-content" id="straight-phases-chart" style="width:600px;height:300px"></div>
+            <p>Sorted list, showing <i>km</i></p>
+            <p id="straightPhases"> </p>
+         </div>
       </div> <!-- /.container -->
 
      <!-- Bootstrap core JavaScript==================================================-->
@@ -45,5 +59,14 @@
      <script src="../assets/js/jquery.ui.widget.js"></script>
      <script src="../assets/js/jquery.iframe-transport.js"></script>
      <script src="../assets/js/jquery.fileupload.js"></script>
+
+     <!-- Flot Charts JavaScript -->
+     <script src="../vendor/flot/excanvas.min.js"></script>
+     <script src="../vendor/flot/jquery.flot.js"></script>
+     <script src="../vendor/flot/jquery.flot.pie.js"></script>
+     <script src="../vendor/flot/jquery.flot.resize.js"></script>
+     <script src="../vendor/flot/jquery.flot.time.js"></script>
+     <script src="../vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+     <script src="../data/flot-data.js"></script>
    </body>
 </html>
