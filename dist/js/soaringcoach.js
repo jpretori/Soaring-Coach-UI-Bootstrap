@@ -93,7 +93,12 @@ function getStraightPhasesList(response) {
       dist = Math.round(dist); //get rid of centimeters
       dist = dist / 1000; //convert to kilometers
 
-      distances.push(dist);
+      var short_phase_description = "Distance: ".concat(
+            dist,
+            "; Time: ",
+            straightPhaseObjects[i].start_point.timestamp);
+      
+      distances.push(short_phase_description);
    }
 
    var html = "<ul><li>" +
