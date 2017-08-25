@@ -97,11 +97,11 @@ function getStraightPhasesList(response) {
             dist,
             "; Time: ",
             straightPhaseObjects[i].start_point.timestamp);
-      
+
       distances.push(short_phase_description);
    }
 
-   var html = "<ul><li>" +
+   var html = "<ol><li>" +
       distances.join("</li><li>") +
     "</li></ul>";
 
