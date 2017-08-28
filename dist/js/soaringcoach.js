@@ -21,6 +21,8 @@ $("#uploadForm").submit(function(event){
 
      $('#totalDistance').html(response.total_track_distance);
 
+     $('#circlingPercentage').html(response.percentageTimeCircling);
+
      plotStraightPhases(response);
      $('#straightPhases').html(getStraightPhasesList(response));
    });
