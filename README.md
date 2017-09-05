@@ -2,42 +2,16 @@
 
 There is a clickable prototype that documents the interface this repo is working towards: https://xd.adobe.com/view/dbea7dcf-03f4-4070-b2fd-a33ac5bb2559/
 
-What follows below, is the original Readme.md from the bootstrap theme.  This theme will actually not be used at all, and after all of it has been removed, the readme will change to reflect that.
+# Misc Notes
+These notes will be integrated elsewhere and cleaned up, later.  For now this is at least a single place to keep them.
 
+## Branching strategy
+Git flow will be used, and releases will be synchronised with the SoaringCoach repository: https://github.com/jpretori/SoaringCoach.
 
-# [Start Bootstrap](http://startbootstrap.com/) - [SB Admin 2](http://startbootstrap.com/template-overviews/sb-admin-2/)
-[![CDNJS](https://img.shields.io/cdnjs/v/startbootstrap-sb-admin-2.svg)](https://cdnjs.com/libraries/startbootstrap-sb-admin-2)
+One thing to note, is that what is normally called the "develop" branch, will in this project be called "gh-pages".  This way, any new merge into develop (a.k.a. gh-pages) will automatically deploy to https://jpretori.github.io/SoaringCoach-UI-Bootstrap/pages/index.html.
 
-[SB Admin 2](http://startbootstrap.com/template-overviews/sb-admin-2/) is an open source, admin dashboard template for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
+So the long-lived branches are:
+ - `master` - used as per normal Git Flow, to track stable versions
+ - `gh-pages` - used as **develop** branch, to gather completed features
 
-## Getting Started
-
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](http://startbootstrap.com/template-overviews/sb-admin-2/)
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-sb-admin-2.git`
-* Fork the repo
-
-## Using the Source Files
-
-After cloning the repo take a look at the `gulpfile.js` and check out the tasks available:
-* `gulp` The default task will compile the LESS and JS into the `dist` directory and minify the output, and it will copy all vendor libraries from `bower_components` into the `vendor` directory
-* `gulp dev` The dev task will serve up a local version of the template and will watch the LESS, JS, and HTML files for changes and reload the browser windo automatically
-
-To update dependencies, run `bower update` and then run `gulp copy` to copy the updated dependencies into the `vendor` directory
-
-## Bugs and Issues
-
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/sb-admin-2/).
-
-## Creator
-
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
-
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
-
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
-
-## Copyright and License
-
-Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/blob/gh-pages/LICENSE) license.
+Short-lived branches are as per usual: `hotfixes`, `features`, `releases`
