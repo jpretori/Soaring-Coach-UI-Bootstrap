@@ -1,12 +1,11 @@
 $("#uploadForm").submit(function(event){
-   //Do stuff.  Like upload the file.
    var form = new FormData($('#uploadForm')[0]);
 
    var settings = {
       "async": true,
       "crossDomain": true,
       "url": "https://soaringcoach-develop.herokuapp.com/upload",
-      //"url": "http://localhost:9876/upload",
+      //"url": "http://localhost:8080/upload",
       "type": "POST",
       "cache": false,
       "processData": false,
@@ -21,7 +20,7 @@ $("#uploadForm").submit(function(event){
 
      $('#totalDistance').html(response.total_track_distance);
 
-     $('#circlingPercentage').html(response.percentageTimeCircling);
+     plotCirclingPercentage(response)
 
      plotStraightPhases(response);
      $('#straightPhases').html(getStraightPhasesList(response));
@@ -29,6 +28,31 @@ $("#uploadForm").submit(function(event){
 
    event.preventDefault();
 });
+
+function plotCirclingPercentage(response) {
+   var circlingPercentageOptions = {
+      series: {
+          pie: {
+              innerRadius: 0.5,
+              show: true
+          }
+      },
+      legend: {
+         show: false
+      }
+   }
+
+   var circlingData = [
+      {label: "Circling", data: 0},
+      {label: "Straight", data: 0}
+   ];
+
+   circlingData[0].data = response.percentageTimeCircling;
+   circlingData[1].data = 100 - response.percentageTimeCircling;
+
+   $.plot($("#circling-percentage-chart"), circlingData, circlingPercentageOptions);
+
+};
 
 function plotStraightPhases(response) {
    var barOptions = {
