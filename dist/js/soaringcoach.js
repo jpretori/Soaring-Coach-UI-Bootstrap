@@ -16,9 +16,11 @@ $("#uploadForm").submit(function(event){
    $.ajax(settings).done(function (response) {
      console.log(response);
 
-     $('#pilotName').html(getPilotName(response));
+     $('#pilotName').html(response.pilotName);
 
-     $('#totalDistance').html(response.total_track_distance);
+     $('#totalDistance').html(response.totalGroundTrackDistance);
+
+     $('#flightDate').html(response.flightDate);
 
      plotCirclingPercentage(response)
 
@@ -101,10 +103,6 @@ function plotStraightPhases(response) {
    barData.data = distances;
 
    $.plot($("#straight-phases-chart"), [barData], barOptions);
-}
-
-function getPilotName(flight) {
-   return flight.pilot_name;
 }
 
 function getStraightPhasesList(response) {
