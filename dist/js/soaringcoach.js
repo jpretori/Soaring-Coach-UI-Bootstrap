@@ -85,7 +85,7 @@ function plotStraightPhases(response) {
       data: []
    };
 
-   var straightPhaseObjects = response.straight_phases;
+   var straightPhaseObjects = response.straightPhases;
    var distances = new Array();
 
    for (i = 0; i < straightPhaseObjects.length; i++) {
@@ -108,7 +108,7 @@ function getPilotName(flight) {
 }
 
 function getStraightPhasesList(response) {
-   var straightPhaseObjects = response.straight_phases.sort(function(a, b) {
+   var straightPhaseObjects = response.straightPhases.sort(function(a, b) {
       return b.distance - a.distance;
    });
    var distances = new Array();
