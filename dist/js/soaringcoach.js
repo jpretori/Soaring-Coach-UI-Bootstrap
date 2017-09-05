@@ -5,7 +5,7 @@ $("#uploadForm").submit(function(event){
    var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "https://protected-bayou-34428.herokuapp.com/upload",
+      "url": "https://soaringcoach-develop.herokuapp.com/upload",
       //"url": "http://localhost:9876/upload",
       "type": "POST",
       "cache": false,
