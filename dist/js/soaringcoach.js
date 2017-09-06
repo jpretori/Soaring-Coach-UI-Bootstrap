@@ -1,12 +1,15 @@
 $("#uploadForm").submit(function(event){
-   //Do stuff.  Like upload the file.
+   $('#flightDetails').fadeOut();
+   spinner = startSpinner();
+
    var form = new FormData($('#uploadForm')[0]);
 
    var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "https://soaringcoach-develop.herokuapp.com/upload",
-      //"url": "http://localhost:9876/upload",
+      "url": "https://soaringcoach.herokuapp.com/upload",
+      //"url": "https://soaringcoach-develop.herokuapp.com/upload",
+      //"url": "http://localhost:8080/upload",
       "type": "POST",
       "cache": false,
       "processData": false,
@@ -17,18 +20,49 @@ $("#uploadForm").submit(function(event){
    $.ajax(settings).done(function (response) {
      console.log(response);
 
-     $('#pilotName').html(getPilotName(response));
+     $('#pilotName').html(response.pilotName);
 
-     $('#totalDistance').html(response.total_track_distance);
+     distKm = response.totalGroundTrackDistance / 1000;
+     $('#totalDistance').html(distKm.toLocaleString() + " km");
 
-     $('#circlingPercentage').html(response.percentageTimeCircling);
+     $('#flightDate').html(response.flightDate);
+
+     plotCirclingPercentage(response)
 
      plotStraightPhases(response);
      $('#straightPhases').html(getStraightPhasesList(response));
+
+     spinner.stop();
+     $('#flightDetails').fadeIn();
    });
 
    event.preventDefault();
 });
+
+function plotCirclingPercentage(response) {
+   var circlingPercentageOptions = {
+      series: {
+          pie: {
+              innerRadius: 0.5,
+              show: true
+          }
+      },
+      legend: {
+         show: false
+      }
+   }
+
+   var circlingData = [
+      {label: "Circling", data: 0},
+      {label: "Straight", data: 0}
+   ];
+
+   circlingData[0].data = response.percentageTimeCircling;
+   circlingData[1].data = 100 - response.percentageTimeCircling;
+
+   $.plot($("#circling-percentage-chart"), circlingData, circlingPercentageOptions);
+
+};
 
 function plotStraightPhases(response) {
    var barOptions = {
@@ -61,7 +95,7 @@ function plotStraightPhases(response) {
       data: []
    };
 
-   var straightPhaseObjects = response.straight_phases;
+   var straightPhaseObjects = response.straightPhases;
    var distances = new Array();
 
    for (i = 0; i < straightPhaseObjects.length; i++) {
@@ -79,12 +113,8 @@ function plotStraightPhases(response) {
    $.plot($("#straight-phases-chart"), [barData], barOptions);
 }
 
-function getPilotName(flight) {
-   return flight.pilot_name;
-}
-
 function getStraightPhasesList(response) {
-   var straightPhaseObjects = response.straight_phases.sort(function(a, b) {
+   var straightPhaseObjects = response.straightPhases.sort(function(a, b) {
       return b.distance - a.distance;
    });
    var distances = new Array();
@@ -108,4 +138,32 @@ function getStraightPhasesList(response) {
     "</li></ul>";
 
     return html;
+}
+
+function startSpinner() {
+   var opts = {
+      lines: 13 // The number of lines to draw
+      , length: 28 // The length of each line
+      , width: 14 // The line thickness
+      , radius: 42 // The radius of the inner circle
+      , scale: 1 // Scales overall size of the spinner
+      , corners: 1 // Corner roundness (0..1)
+      , color: '#000' // #rgb or #rrggbb or array of colors
+      , opacity: 0.25 // Opacity of the lines
+      , rotate: 0 // The rotation offset
+      , direction: 1 // 1: clockwise, -1: counterclockwise
+      , speed: 1 // Rounds per second
+      , trail: 60 // Afterglow percentage
+      , fps: 20 // Frames per second when using setTimeout() as a fallback for CSS
+      , zIndex: 2e9 // The z-index (defaults to 2000000000)
+      , className: 'spinner' // The CSS class to assign to the spinner
+      , top: '50%' // Top position relative to parent
+      , left: '50%' // Left position relative to parent
+      , shadow: false // Whether to render a shadow
+      , hwaccel: false // Whether to use hardware acceleration
+      , position: 'absolute' // Element positioning
+   }
+   var target = document.getElementById('uploadForm')
+   var spinner = new Spinner(opts).spin(target);
+   return spinner;
 }
