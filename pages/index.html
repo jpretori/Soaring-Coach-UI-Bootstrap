@@ -13,12 +13,16 @@
       <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
       <!-- Custom styles for this template -->
       <link href="starter-template.css" rel="stylesheet">
+      <!-- DataTables CSS -->
+      <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+      <!-- DataTables Responsive CSS -->
+      <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
    </head>
 
    <body>
-      <nav class="navbar navbar-inverse navbar-fixed-top"></nav>
       <div class="container">
-         <h1>Upload IGC File</h1>
+         <h1 style="align=centre">Please upload an IGC file for analysis</h1>
 
          <form id="uploadForm" enctype="multipart/form-data">
             <div class="form-group">
@@ -27,31 +31,59 @@
       		</div>
          </form>
 
-         <div>
-            <h1>Flight Details</h1>
-            <h3>Pilot Name</h3>
-            <p id="pilotName"> </p>
+         <div id="flightDetails" style="display:none">
+            <div class="table-responsive">
+               <table class="table">
+                    <thead>
+                        <tr>
+                           <th>Pilot</th>
+                           <th>Date</th>
+                           <th>Ground Track Distance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <td><p id="pilotName"> </p></td>
+                          <td><p id="flightDate"> </p></td>
+                          <td><p id="totalDistance"> </p></td>
+                       </tr>
+                    </tbody>
+               </table>
 
-            <h3>Total Track Distance</h3>
-            <p id="totalDistance"> </p>
-
-            <h3>Flight Date</h3>
-            <p id="flightDate"> </p>
-
-            <h3>Percentage of time spent circling</h3>
-            <div class="flot-chart-content" id="circling-percentage-chart" style="width:600px;height:300px"></div>
-
-            <h3>Straight Phases</h3>
-            <div class="flot-chart-content" id="straight-phases-chart" style="width:600px;height:300px"></div>
-            <p>Sorted list, showing <i>km</i> and <i>timestamp</i></p>
-            <p id="straightPhases"> </p>
+               <table class="table">
+                    <thead>
+                        <tr>
+                           <th>Circling</th>
+                           <th>Straight Phases</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <td>
+                             <div class="flot-chart-content" id="circling-percentage-chart" style="width:300px;height:150px"></div>
+                          </td>
+                          <td>
+                             <div class="flot-chart-content" id="straight-phases-chart" style="width:300px;height:150px"></div>
+                          </td>
+                       </tr>
+                    </tbody>
+               </table>
+            </div>
          </div>
+         <!-- /.table-responsive -->
 
-         <div class="opensource-links">
-            <hr>
-            <p><img src="../assets/agplv3-88x31.png" alt="AGPL v3 logo"></p>
-            <p><a href = "https://github.com/jpretori/Soaring-Coach-UI-Bootstrap">UI Source</a></p>
-            <p><a href = "https://github.com/jpretori/SoaringCoach">Backend Source</a></p>
+         <div class="opensource-links" style="opacity: 0.60">
+            <div class="table-responsive">
+               <table class="table">
+                  <tbody>
+                    <tr>
+                       <td><p><img src="../assets/agplv3-88x31.png" alt="AGPL v3 logo"></p></td>
+                       <td><p><a href = "https://github.com/jpretori/Soaring-Coach-UI-Bootstrap">UI Source</a></p></td>
+                       <td><p><a href = "https://github.com/jpretori/SoaringCoach">Backend Source</a></p></td>
+                    </tr>
+                  </tbody>
+               </table>
+            </div>
          </div>
       </div> <!-- /.container -->
 
@@ -64,6 +96,10 @@
 
      <!-- Custom Soaring Coach JavaScript -->
      <script src="../dist/js/soaringcoach.js"></script>
+
+
+     <!-- Loading Spinner -->
+     <script src="../dist/js/spin.min.js"></script>
 
      <!-- File upload knob fanciness -->
      <script src="../assets/js/jquery.knob.js"></script>
