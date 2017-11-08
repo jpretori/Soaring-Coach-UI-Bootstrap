@@ -7,8 +7,8 @@ $("#uploadForm").submit(function(event){
    var settings = {
       "async": true,
       "crossDomain": true,
-      "url": "https://soaringcoach.herokuapp.com/upload",
-      //"url": "https://soaringcoach-develop.herokuapp.com/upload",
+      //"url": "https://soaringcoach.herokuapp.com/upload",
+      "url": "https://soaringcoach-develop.herokuapp.com/upload",
       //"url": "http://localhost:8080/upload",
       "type": "POST",
       "cache": false,
